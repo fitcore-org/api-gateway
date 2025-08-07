@@ -17,13 +17,13 @@ class GatewayConfig(
             .route("auth-service") { r: PredicateSpec ->
                 r.path("/auth/**")
                     .filters { f -> f.filter(jwtAuthenticationFilter) }
-                    .uri("lb://AUTH-SERVICE")
+                    .uri("lb://auth-service")
             }
 
             .route("payment-service") { r: PredicateSpec ->
                 r.path("/payment/**")
                     .filters { f -> f.filter(jwtAuthenticationFilter) }
-                    .uri("lb://PAYMENT-SERVICE")
+                    .uri("lb://payment-service")
             }
             .build()
 }

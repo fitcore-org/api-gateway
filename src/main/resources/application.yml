@@ -22,9 +22,9 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
 
 jwt:
-  secret: MyVerySecretSigningKey      # substitua por uma chave segura
+  secret: dk1v9mOPWQZx4pl2ns7D5YRFv8sHg3tLbcxyqzABP0Lmns2Xkc   
   token:
-    validity: 3600000                 # 1 hora em milissegundos
+    validity: 3600000

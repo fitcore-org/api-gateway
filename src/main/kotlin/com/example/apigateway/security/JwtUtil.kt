@@ -22,16 +22,18 @@ class JwtUtil(
         null
     }
 
-    fun generateToken(userId: String): String {
+    fun generateToken(userId: String, role: String): String {
         val now = System.currentTimeMillis()
         val expiry = Date(now + tokenValidity)
         return Jwts.builder()
             .setSubject(userId)
+            .claim("role", role)
             .setIssuedAt(Date(now))
             .setExpiration(expiry)
             .signWith(SignatureAlgorithm.HS512, jwtSecret.toByteArray())
             .compact()
     }
+
 
     fun validateToken(token: String) {
         Jwts.parserBuilder()
