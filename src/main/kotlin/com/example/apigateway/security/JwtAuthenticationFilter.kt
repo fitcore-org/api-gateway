@@ -14,7 +14,7 @@ class JwtAuthenticationFilter(
     private val jwtUtil: JwtUtil
 ) : GatewayFilter, Ordered {
 
-    private val excludedPaths = listOf("/auth/login", "/auth/register", "/payment/api/plans")
+    private val excludedPaths = listOf("/auth/login", "/auth/register", "/payment", "auth/password-reset/request", "auth/password-reset/confirm")
 
     override fun filter(exchange: ServerWebExchange, chain: GatewayFilterChain): Mono<Void> {
         val requestPath = exchange.request.path.toString()

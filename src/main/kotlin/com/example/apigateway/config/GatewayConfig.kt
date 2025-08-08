@@ -14,16 +14,30 @@ class GatewayConfig(
     @Bean
     fun customRouteLocator(builder: RouteLocatorBuilder): RouteLocator =
         builder.routes()
-            .route("auth-service") { r: PredicateSpec ->
-                r.path("/auth/**")
-                    .filters { f -> f.filter(jwtAuthenticationFilter) }
-                    .uri("lb://auth-service")
-            }
 
             .route("payment-service") { r: PredicateSpec ->
                 r.path("/payment/**")
                     .filters { f -> f.filter(jwtAuthenticationFilter) }
                     .uri("lb://payment-service")
             }
+
+            .route("face-service") { r: PredicateSpec ->
+                r.path("/face/**")
+                    .filters { f -> f.filter(jwtAuthenticationFilter) }
+                    .uri("lb://face-service")
+            }
+
+            .route("auth-service") { r: PredicateSpec ->
+                r.path("/auth/**")
+                    .filters { f -> f.filter(jwtAuthenticationFilter) }
+                    .uri("lb://auth-service")
+            }
+            
+            .route("finance-service") { r: PredicateSpec ->
+                r.path("/finance/**")
+                    .filters { f -> f.filter(jwtAuthenticationFilter) }
+                    .uri("lb://finance-service")
+            }
+
             .build()
 }
